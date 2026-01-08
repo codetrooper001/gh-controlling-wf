@@ -2,7 +2,6 @@ name: matrix-test
 on: push
 jobs:
   build:
-    continue-on-error: true
     strategy:
       matrix:
         node-version: [12, 14, 16]
@@ -13,6 +12,7 @@ jobs:
         exclude:
           - node-version: 12
             os: windows-latest
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
       - name: get code
