@@ -1,5 +1,5 @@
 name: Website Deployment
-on: workflow_dispatch
+on: push
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy
-        run: echo "Deploying..."
+        uses: ./.github/workflows/reusable.yml
   report:
     needs: [lint, deploy]
     if: failure()
